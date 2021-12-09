@@ -10,7 +10,6 @@ def parse_input(file_name: str) -> List[Dict[str, int]]:
             x2, y2 = [int(item) for item in coro_2.split(",")]
 
             if x1 > x2:
-                print(line)
                 temp_x = x1
                 x1 = x2
                 x2 = temp_x
