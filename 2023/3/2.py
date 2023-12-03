@@ -12,8 +12,7 @@ def get_gears_multiple(i_pos: int, j_pos: int, symbols_map: list[list[str]]) -> 
             char_to_check = symbols_map[m][n]
 
             if char_to_check.isdigit():
-                prev_char = symbols_map[m][n - 1] if (n - 1) >= 0 else ""
-
+                prev_char = symbols_map[m][n - 1]
                 if not first_char_in_line and prev_char.isdigit():
                     continue
 
