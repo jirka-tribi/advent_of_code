@@ -19,19 +19,15 @@ def get_gears_multiple(i_pos: int, j_pos: int, symbols_map: list[list[str]]) -> 
                 char_digit = char_to_check
 
                 if first_char_in_line:
-                    for k in range(1, 10):
-                        previous_char = symbols_map[m][n - k]
-                        if previous_char.isdigit():
-                            char_digit = previous_char + char_digit
-                        else:
-                            break
+                    k = 1
+                    while symbols_map[m][n - k].isdigit():
+                        char_digit = symbols_map[m][n - k] + char_digit
+                        k += 1
 
-                for k in range(1, 10):
-                    next_char = symbols_map[m][n + k]
-                    if next_char.isdigit():
-                        char_digit = char_digit + next_char
-                    else:
-                        break
+                k = 1
+                while symbols_map[m][n + k].isdigit():
+                    char_digit = char_digit + symbols_map[m][n + k]
+                    k += 1
 
                 if not first_gear:
                     first_gear = int(char_digit)

@@ -30,13 +30,10 @@ def main():
                 if previous_char.isdigit():
                     continue
 
-                for k in range(1, 10):
-                    next_char = symbols_list[i][j + k]
-
-                    if next_char.isdigit():
-                        char += next_char
-                    else:
-                        break
+                k = 1
+                while symbols_list[i][j + k].isdigit():
+                    char = char + symbols_list[i][j + k]
+                    k += 1
 
                 if test_digit_in_map(char, i, j, symbols_list):
                     sum_digits += int(char)
