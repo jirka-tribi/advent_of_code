@@ -9,13 +9,11 @@ def get_gears_multiple(i_pos: int, j_pos: int, symbols_map: list[list[str]]) -> 
         first_char_in_line = True
 
         for n in range(j_pos - 1, j_pos + 2):
-            char_to_check = symbols_map[m][n]
+            char_digit = symbols_map[m][n]
 
-            if char_to_check.isdigit():
+            if char_digit.isdigit():
                 if not first_char_in_line and symbols_map[m][n - 1].isdigit():
                     continue
-
-                char_digit = char_to_check
 
                 if first_char_in_line:
                     k = 1

@@ -26,8 +26,7 @@ def main():
         for j in range(1, len(symbols_list[i]) - 1):
             char = symbols_list[i][j]
             if char.isdigit():
-                previous_char = symbols_list[i][j - 1]
-                if previous_char.isdigit():
+                if symbols_list[i][j - 1].isdigit():
                     continue
 
                 k = 1
