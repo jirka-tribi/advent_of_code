@@ -23,12 +23,12 @@ def correct_position(position: int) -> int:
     if 0 < position < 100:
         return new_position
 
-    if position < 0:
-        counter_2 += 1
-        new_position = 100 + position
+    counter_2 += 1
 
-    if position > 99:
-        counter_2 += 1
+    if position < 0:
+        new_position = position + 100
+
+    if position > 100:
         new_position = position - 100
 
     return correct_position(new_position)
