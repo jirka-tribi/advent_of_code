@@ -1,36 +1,46 @@
 import typing as t
 
-INPUT_FILE_NAME = "test_input.txt"
+INPUT_FILE_NAME = "input.txt"
+
+counter_1 = 0
+counter_2 = 0
 
 def parse_input() -> t.Iterator[tuple[str, int]]:
     with open(INPUT_FILE_NAME, "r") as f:
-        for line in f.read().split("\n"):
-            if not line:
-                continue
-
+        for line in f:
             yield line[0], int(line[1:])
 
 def correct_position(position: int) -> int:
+    global counter_1
+    global counter_2
     new_position = position
 
-    if 0 <= position <= 99:
+    if position == 0 or position == 100:
+        counter_1 += 1
+        counter_2 += 1
+        return 0
+
+    if 0 < position < 100:
         return new_position
 
     if position < 0:
+        counter_2 += 1
         new_position = 100 + position
 
     if position > 99:
+        counter_2 += 1
         new_position = position - 100
 
     return correct_position(new_position)
 
 
-
 def main() -> None:
-    counter = 0
+    global counter_2
     position = 50
 
     for direction, count in parse_input():
+        previous_position = position
+
         if direction == "L":
             position = position - count
 
@@ -39,10 +49,12 @@ def main() -> None:
 
         position = correct_position(position)
 
-        if position == 0:
-            counter += 1
+        if previous_position == 0 and direction == "L":
+            counter_2 -= 1
 
-    print(counter)
+    print(counter_1)
+    print(counter_2)
+
 
 if __name__ == "__main__":
     main()
