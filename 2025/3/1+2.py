@@ -12,7 +12,7 @@ def find_correct_number(seq: str, digits: int) -> int:
     number = ""
     next_index = 0
 
-    for i in range(digits - 1, -1, -1):
+    for i in range(digits, 0, -1):
         next_index, next_number = find_highest_number(seq, next_index, i)
         number = number + next_number
 
@@ -23,7 +23,7 @@ def find_highest_number(seq: str, start: int, max_end: int) -> tuple[int, str]:
     highest = 0
     highest_index = 0
 
-    for index in range(start, len(seq) - max_end):
+    for index in range(start, (len(seq) + 1) - max_end):
         number = int(seq[index])
         if number > highest:
             highest = number
